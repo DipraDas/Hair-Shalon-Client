@@ -1,7 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../../contexts/AuthProvider';
 import './SendingInterest.css';
 
 const SendingInterest = () => {
+
+    const { user } = useContext(AuthContext);
+    const usersName = user?.displayName;
+    const usersMail = user?.email;
 
     const firstNameRef = useRef();
     const lastNameRef = useRef();
@@ -11,7 +17,7 @@ const SendingInterest = () => {
     const messageRef = useRef();
 
     const handleClientRequest = e => {
-        
+
         const firstName = firstNameRef.current.value;
         const lastName = lastNameRef.current.value;
         const email = emailRef.current.value;
@@ -21,7 +27,7 @@ const SendingInterest = () => {
 
         const newClientRequest = { firstName, lastName, email, phone, choice, message };
 
-        fetch('http://localhost:5000/newClients', {
+        fetch('http://localhost:5000/interestedCustomer', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -31,7 +37,13 @@ const SendingInterest = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Our team will connect you shortly');
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Successful',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
                     e.target.reset();
                 }
             })
@@ -60,7 +72,7 @@ const SendingInterest = () => {
                             <div className="row">
                                 <div className="col-md-6 col-sm-12 px-4">
                                     <label htmlFor="">E-MAIL</label><br />
-                                    <input type="email" ref={emailRef} name="" id="" placeholder='Enter Your Email Address' />
+                                    <input type="email" ref={emailRef} name="" id="" placeholder='Enter Your Email' />
                                 </div>
                                 <div className="col-md-6 col-sm-12 px-4">
                                     <label htmlFor="">PHONE</label><br />
@@ -69,9 +81,15 @@ const SendingInterest = () => {
                             </div>
                             <div className="row px-4">
                                 <label htmlFor="">I'M INTERESTED IN-</label><br />
-                                <input className='mx-2' type="text" ref={choiceRef} name="" id="" placeholder='Short Cut / Long Cut / Baby Cut / Coloring' />
+                                {/* <input className='mx-2' type="text" ref={choiceRef} name="" id="" placeholder='Short Cut / Long Cut / Baby Cut / Coloring' /> */}
+                                <select ref={choiceRef} class="form-select border-0" aria-label="Default select example">
+                                    <option selected>Choose your preference</option>
+                                    <option value="coloring">Coloring</option>
+                                    <option value="rebonding">Rebonding</option>
+                                    <option value="style">Style</option>
+                                </select>
                             </div>
-                            <div className="row px-4">
+                            <div className="row px-4 mt-4">
                                 <label htmlFor="">MESSAGE</label>
                                 <textarea className='mx-2' ref={messageRef} name="" id="" cols="30" rows="1" placeholder='Enter Your Message'></textarea>
                             </div>
