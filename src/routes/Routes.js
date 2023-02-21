@@ -6,6 +6,7 @@ import HomeComponents from "../pages/Home/HomeComponents/HomeComponents";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import ShopComponents from "../pages/Shop/ShopComponents/ShopComponents";
+import PrivateRoutes from "./PrivateRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/shop",
-                element: <ShopComponents></ShopComponents>,
+                element: <PrivateRoutes><ShopComponents></ShopComponents></PrivateRoutes>
             },
             {
                 path: "/contact",
@@ -35,7 +36,7 @@ const routes = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register> ,
-            },
+            }
         ]
     },
 ])

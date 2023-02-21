@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import './Header.css';
 import logo from '../../../../src/Images/HomePage/Logo.png';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.log(err));
+    }
+
     return (
         <div>
             <Navbar className='navBarColor' collapseOnSelect expand="lg" bg="light" variant="light">
@@ -21,7 +30,21 @@ const Header = () => {
                             <Nav.Link as={Link} to="/contact" className='navName'>CONTACT</Nav.Link>
                         </Nav>
                         <Nav>
-                            <NavLink to="/login"><button className='bookBtn'>LOGIN</button></NavLink>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <div class="dropdown bg-white">
+                                            <button class="bookBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                {user?.displayName}
+                                            </button>
+                                            <ul class="dropdown-menu py-0 rounded-none">
+                                                <li><button style={{ width: '100%', paddingTop: '8px', paddingBottom: '8px', border: 'none', borderBottom: '1px solid gray', backgroundColor: '#fff' }}>Dashboard</button></li>
+                                                <li><button onClick={handleLogOut} style={{ width: '100%', paddingTop: '8px', paddingBottom: '8px', border: 'none', backgroundColor: '#fff' }}>Sign Out</button></li>
+                                            </ul>
+                                        </div>
+                                    </> :
+                                    <><NavLink to="/login"><button className='bookBtn'>LOGIN</button></NavLink></>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
