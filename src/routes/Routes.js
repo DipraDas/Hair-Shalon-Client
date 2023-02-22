@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashboardLayout from "../layout/DashboardLayout/DashboardLayout";
 import Main from "../layout/MainLayout/Main";
 import AboutComponents from "../pages/About/AboutComponents/AboutComponents";
+import AllAdmins from "../pages/AllAdmins/AllAdmins";
+import AllRegisteredUser from "../pages/AllRegisteredUser/AllRegisteredUser";
 import ContactComponents from "../pages/Contact/ContactComponents/ContactComponents";
 import HomeComponents from "../pages/Home/HomeComponents/HomeComponents";
 import Login from "../pages/Login/Login";
@@ -31,14 +34,29 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/login",
-                element: <Login></Login> ,
+                element: <Login></Login>,
             },
             {
                 path: "/register",
-                element: <Register></Register> ,
-            }
+                element: <Register></Register>,
+            },
         ]
     },
+    {
+        path: "/dashboard",
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
+        children: [
+            {
+                path: '/dashboard',
+                element: <AllRegisteredUser></AllRegisteredUser>
+            },
+            {
+                path: '/dashboard/allAdmin',
+                element: <AllAdmins></AllAdmins>
+            },
+
+        ]
+    }
 ])
 
 export default routes;

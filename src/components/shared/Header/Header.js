@@ -38,7 +38,7 @@ const Header = () => {
                                                 {user?.displayName}
                                             </button>
                                             <ul class="dropdown-menu py-0 rounded-none">
-                                                <li><button style={{ width: '100%', paddingTop: '8px', paddingBottom: '8px', border: 'none', borderBottom: '1px solid gray', backgroundColor: '#fff' }}>Dashboard</button></li>
+                                                <li><NavLink to="/dashboard"><button style={{ width: '100%', paddingTop: '8px', paddingBottom: '8px', border: 'none', borderBottom: '1px solid gray', backgroundColor: '#fff' }}>Dashboard</button></NavLink> </li>
                                                 <li><button onClick={handleLogOut} style={{ width: '100%', paddingTop: '8px', paddingBottom: '8px', border: 'none', backgroundColor: '#fff' }}>Sign Out</button></li>
                                             </ul>
                                         </div>

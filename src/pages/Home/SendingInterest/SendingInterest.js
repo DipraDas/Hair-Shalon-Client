@@ -1,13 +1,8 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../../contexts/AuthProvider';
 import './SendingInterest.css';
 
 const SendingInterest = () => {
-
-    const { user } = useContext(AuthContext);
-    const usersName = user?.displayName;
-    const usersMail = user?.email;
 
     const firstNameRef = useRef();
     const lastNameRef = useRef();
