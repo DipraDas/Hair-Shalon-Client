@@ -35,6 +35,31 @@ const AllRegisteredUser = () => {
                 }
             })
     }
+
+    const handleDetetingUser = user => {
+        console.log(user);
+        fetch(`http://localhost:5000/users/${user._id}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center-center',
+                        icon: 'success',
+                        title: 'User Removed',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+            })
+    }
+
+
     return (
         <div>
             <div className="container mx-auto mt-4">
@@ -59,14 +84,14 @@ const AllRegisteredUser = () => {
                                     <td>
                                         {
                                             user?.role !== 'admin' ?
-                                                <button onClick={() => handleMakeAdmin(user._id)} style={{ backgroundColor: '#0a18bc' }} className='btn btn-sm text-white py-0'>Make Admin</button> :
+                                                <button onClick={() => handleMakeAdmin(user._id)} style={{ backgroundColor: '#005967' }} className='btn btn-sm text-white py-0'>Make Admin</button> :
                                                 <div style={{ color: '#0ca1b7' }} className="d-flex align-items-center">
                                                     <div><FaCheckCircle></FaCheckCircle> </div>
                                                     <div className='ms-2'>Admin</div>
                                                 </div>
                                         }
                                     </td>
-                                    <td><button style={{ backgroundColor: 'red' }} type="button" class="btn btn-sm text-white py-0">Delete</button></td>
+                                    <td><button onClick={() => handleDetetingUser(user)} style={{ backgroundColor: 'red' }} type="button" class="btn btn-sm text-white py-0">Delete</button></td>
                                 </tr>)
                             }
                         </tbody>
