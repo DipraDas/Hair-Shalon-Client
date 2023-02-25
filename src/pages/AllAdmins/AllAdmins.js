@@ -43,7 +43,6 @@ const AllAdmins = () => {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col"></th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">BackID</th>
@@ -52,9 +51,8 @@ const AllAdmins = () => {
                         </thead>
                         <tbody>
                             {
-                                users.map((user, i) => <tr key={user._id}>
+                                users?.map((user, i) => <tr key={user._id}>
                                     <th scope="row">{i + 1}</th>
-                                    <th>{user.name[0]}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
                                     <td>{user._id}</td>

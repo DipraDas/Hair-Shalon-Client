@@ -7,8 +7,10 @@ import AllRegisteredUser from "../pages/AllRegisteredUser/AllRegisteredUser";
 import ContactComponents from "../pages/Contact/ContactComponents/ContactComponents";
 import HomeComponents from "../pages/Home/HomeComponents/HomeComponents";
 import Login from "../pages/Login/Login";
+import MyProfile from "../pages/MyProfile/MyProfile";
 import Register from "../pages/Register/Register";
 import ShopComponents from "../pages/Shop/ShopComponents/ShopComponents";
+import AdminRoute from "./AdminRoute";
 import PrivateRoutes from "./PrivateRoutes";
 
 const routes = createBrowserRouter([
@@ -48,11 +50,15 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <AllRegisteredUser></AllRegisteredUser>
+                element: <MyProfile></MyProfile>
+            },
+            {
+                path: '/dashboard/allUsers',
+                element: <AdminRoute><AllRegisteredUser></AllRegisteredUser></AdminRoute>
             },
             {
                 path: '/dashboard/allAdmin',
-                element: <AllAdmins></AllAdmins>
+                element: <AdminRoute><AllAdmins></AllAdmins></AdminRoute>
             },
 
         ]
