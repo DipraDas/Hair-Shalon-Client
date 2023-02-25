@@ -2,16 +2,17 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layout/DashboardLayout/DashboardLayout";
 import Main from "../layout/MainLayout/Main";
 import AboutComponents from "../pages/About/AboutComponents/AboutComponents";
-import AllAdmins from "../pages/AllAdmins/AllAdmins";
-import AllRegisteredUser from "../pages/AllRegisteredUser/AllRegisteredUser";
+import AllAdmins from "../pages/Dashboard/AllAdmins/AllAdmins";
 import ContactComponents from "../pages/Contact/ContactComponents/ContactComponents";
+import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import HomeComponents from "../pages/Home/HomeComponents/HomeComponents";
 import Login from "../pages/Login/Login";
-import MyProfile from "../pages/MyProfile/MyProfile";
 import Register from "../pages/Register/Register";
 import ShopComponents from "../pages/Shop/ShopComponents/ShopComponents";
 import AdminRoute from "./AdminRoute";
 import PrivateRoutes from "./PrivateRoutes";
+import AddBlogs from "../pages/Dashboard/Add Blogs/AddBlogs";
+import AllRegisteredUser from "../pages/Dashboard/AllRegisteredUser/AllRegisteredUser";
 
 const routes = createBrowserRouter([
     {
@@ -60,7 +61,10 @@ const routes = createBrowserRouter([
                 path: '/dashboard/allAdmin',
                 element: <AdminRoute><AllAdmins></AllAdmins></AdminRoute>
             },
-
+            {
+                path: '/dashboard/addBlogs',
+                element: <AdminRoute><AddBlogs></AddBlogs></AdminRoute>
+            },
         ]
     }
 ])
