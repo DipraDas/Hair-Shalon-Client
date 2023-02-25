@@ -19,8 +19,8 @@ const AboutStories = () => {
                         <h3>LINDSEY JONES</h3>
                         <h5>General Manager</h5>
                         <div className='asIcons'>
-                            <Link to="/commingSoon"><i class="fa-brands fa-instagram"></i></Link>
-                            <Link to="/commingSoon"><i class="fa-brands fa-facebook-messenger"></i></Link>
+                            <Link to="/commingSoon"><i className="fa-brands fa-instagram"></i></Link>
+                            <Link to="/commingSoon"><i className="fa-brands fa-facebook-messenger"></i></Link>
                         </div>
                     </div>
                     <div className="col-md-1"></div>
@@ -29,8 +29,8 @@ const AboutStories = () => {
                         <h1>LILLY CHEVEUX</h1>
                         <h5>Hairstylist / Colorist</h5>
                         <div className='asIcons'>
-                            <Link to="/commingSoon"><i class="fa-brands fa-instagram"></i></Link>
-                            <Link to="/commingSoon"><i class="fa-brands fa-facebook-messenger"></i></Link>
+                            <Link to="/commingSoon"><i className="fa-brands fa-instagram"></i></Link>
+                            <Link to="/commingSoon"><i className="fa-brands fa-facebook-messenger"></i></Link>
                         </div>
                     </div>
                     <div className="col-md-1"></div>
@@ -39,8 +39,8 @@ const AboutStories = () => {
                         <h3>BEN SMITH</h3>
                         <h5>Hairstylist / Colorist</h5>
                         <div className='asIcons'>
-                            <Link to="/commingSoon"><i class="fa-brands fa-instagram"></i></Link>
-                            <Link to="/commingSoon"><i class="fa-brands fa-facebook-messenger"></i></Link>
+                            <Link to="/commingSoon"><i className="fa-brands fa-instagram"></i></Link>
+                            <Link to="/commingSoon"><i className="fa-brands fa-facebook-messenger"></i></Link>
                         </div>
                     </div>
                 </div>

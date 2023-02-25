@@ -65,7 +65,7 @@ const AllRegisteredUser = () => {
             <div className="container mx-auto mt-4">
                 <h1 style={{ color: '#D4A977', fontWeight: '300', letterSpacing: '2px' }} className="mb-3">All Users</h1>
                 <div className="table-responsive">
-                    <table class="table table-striped border rounded">
+                    <table className="table table-striped border rounded">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -91,7 +91,7 @@ const AllRegisteredUser = () => {
                                                 </div>
                                         }
                                     </td>
-                                    <td><button onClick={() => handleDetetingUser(user)} style={{ backgroundColor: 'red' }} type="button" class="btn btn-sm text-white py-0">Delete</button></td>
+                                    <td><button onClick={() => handleDetetingUser(user)} style={{ backgroundColor: 'red' }} type="button" className="btn btn-sm text-white py-0">Delete</button></td>
                                 </tr>)
                             }
                         </tbody>

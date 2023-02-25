@@ -4,7 +4,7 @@ import './Loading.css';
 const Loading = () => {
     return (
         <div className="mC">
-            <div class="lds-ellipsis">
+            <div className="lds-ellipsis">
                 <div>
                 </div>
                 <div>

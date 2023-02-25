@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import ContactBanner from '../ContactBanner/ContactBanner';
+import ContactGetInTouch from '../ContactGetInTouch/ContactGetInTouch';
+import ContactGift from '../ContactGift/ContactGift';
 
 const ContactComponents = () => {
     useEffect(() => {
@@ -6,7 +9,9 @@ const ContactComponents = () => {
         }, [])
     return (
         <div>
-            <h1>Contact</h1>
+            <ContactBanner></ContactBanner>
+            <ContactGetInTouch></ContactGetInTouch>
+            <ContactGift></ContactGift>
         </div>
     );
 };

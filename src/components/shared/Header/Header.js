@@ -33,11 +33,11 @@ const Header = () => {
                             {
                                 user?.uid ?
                                     <>
-                                        <div class="dropdown bg-white">
-                                            <button class="bookBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <div className="dropdown bg-white">
+                                            <button className="bookBtn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 {user?.displayName}
                                             </button>
-                                            <ul class="dropdown-menu py-0 rounded-none">
+                                            <ul className="dropdown-menu py-0 rounded-none">
                                                 <li><NavLink to="/dashboard"><button style={{ width: '100%', paddingTop: '8px', paddingBottom: '8px', border: 'none', borderBottom: '1px solid gray', backgroundColor: '#fff' }}>Dashboard</button></NavLink> </li>
                                                 <li><button onClick={handleLogOut} style={{ width: '100%', paddingTop: '8px', paddingBottom: '8px', border: 'none', backgroundColor: '#fff' }}>Sign Out</button></li>
                                             </ul>
