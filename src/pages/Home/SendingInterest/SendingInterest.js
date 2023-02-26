@@ -78,12 +78,12 @@ const SendingInterest = () => {
                             <div className="row px-4">
                                 <label htmlFor="">I'M INTERESTED IN-</label><br />
                                 {/* <input className='mx-2' type="text" ref={choiceRef} name="" id="" placeholder='Short Cut / Long Cut / Baby Cut / Coloring' /> */}
-                                <selectb  ref={choiceRef} className="form-select border-0" aria-label="Default select example">
-                                    <option  value="">Choose your preference</option>
+                                <select ref={choiceRef} className="form-select border-0" aria-label="Default select example">
+                                    <option value="">Choose your preference</option>
                                     <option value="coloring">Coloring</option>
                                     <option value="rebonding">Rebonding</option>
                                     <option value="style">Style</option>
-                                </selectb>
+                                </select>
                             </div>
                             <div className="row px-4 mt-4">
                                 <label htmlFor="">MESSAGE</label>

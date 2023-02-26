@@ -21,6 +21,7 @@ const DashboardLayout = () => {
                             <>
                                 <NavLink to="/dashboard/allUsers" style={{ textDecoration: 'none' }}><div className='px-2 py-2 mt-2 text-white mb-2 nav-style'>All User</div></NavLink>
                                 <NavLink to="/dashboard/allAdmin" style={{ textDecoration: 'none' }}><div className='nav-style px-2 py-2 text-white mb-2'>All Admin</div></NavLink>
+                                <NavLink to="/dashboard/allBlogs" style={{ textDecoration: 'none' }}><div className='nav-style px-2 py-2 text-white mb-2'>All Blogs</div></NavLink>
                                 <NavLink to="/dashboard/addBlogs" style={{ textDecoration: 'none' }}><div className='nav-style px-2 py-2 text-white'>Add Blogs</div></NavLink>
                             </>
                         }

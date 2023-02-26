@@ -13,6 +13,8 @@ import AdminRoute from "./AdminRoute";
 import PrivateRoutes from "./PrivateRoutes";
 import AddBlogs from "../pages/Dashboard/Add Blogs/AddBlogs";
 import AllRegisteredUser from "../pages/Dashboard/AllRegisteredUser/AllRegisteredUser";
+import BlogComponent from "../pages/Blogs/BlogsComponent/BlogComponent";
+import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
 
 const routes = createBrowserRouter([
     {
@@ -30,6 +32,10 @@ const routes = createBrowserRouter([
             {
                 path: "/shop",
                 element: <PrivateRoutes><ShopComponents></ShopComponents></PrivateRoutes>
+            },
+            {
+                path: "/blogs",
+                element: <BlogComponent></BlogComponent>
             },
             {
                 path: "/contact",
@@ -60,6 +66,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/allAdmin',
                 element: <AdminRoute><AllAdmins></AllAdmins></AdminRoute>
+            },
+            {
+                path: '/dashboard/allBlogs',
+                element: <AdminRoute><AllBlogs></AllBlogs></AdminRoute>
             },
             {
                 path: '/dashboard/addBlogs',
