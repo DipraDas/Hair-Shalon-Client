@@ -15,6 +15,7 @@ import AddBlogs from "../pages/Dashboard/Add Blogs/AddBlogs";
 import AllRegisteredUser from "../pages/Dashboard/AllRegisteredUser/AllRegisteredUser";
 import BlogComponent from "../pages/Blogs/BlogsComponent/BlogComponent";
 import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
+import BlogDetails from "../pages/Blogs/BlogDetails/BlogDetails";
 
 const routes = createBrowserRouter([
     {
@@ -36,6 +37,13 @@ const routes = createBrowserRouter([
             {
                 path: "/blogs",
                 element: <BlogComponent></BlogComponent>
+            },
+            {
+                path: "/blogs/:id",
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/blogs/${params.id}`)
+                },
+                element: <BlogDetails></BlogDetails>
             },
             {
                 path: "/contact",
