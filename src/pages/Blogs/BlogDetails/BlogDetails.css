@@ -1,0 +1,38 @@
+.backGroundBlogDetails{
+    background: rgba(0,0,0,0.50) url('../../../../src/Images/BlogPage/bannerTest.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: darken;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backGroundBlogDetailsTag{
+    color: rgb(228, 228, 228);
+    letter-spacing: 2px;
+    font-size: 23px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.backGroundBlogDetailsTitle{
+    letter-spacing: 1px;
+    font-size: 55px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-family: 'Roboto Slab', serif;
+    color: #fff;
+    padding: 0 200px;
+}
+
+.backGroundBlogDetailsTimeComment{
+    color: rgb(236, 236, 236);
+    letter-spacing: 4px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 30px;
+}

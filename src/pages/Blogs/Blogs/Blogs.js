@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Blog from '../Blog/Blog';
 
 const Blogs = () => {
-    const [blogs, setBlogs] = useState({});
+    const [blogs, setBlogs] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/blogs')
             .then(res => res.json())
@@ -13,7 +13,7 @@ const Blogs = () => {
             <div className="row">
                 <div className="col-9">
                     {
-                        blogs.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
+                        blogs?.map(blog => <Blog key={blog._id} blog={blog}></Blog>)
                     }
                 </div>
                 <div className="col-3">
