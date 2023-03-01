@@ -1,11 +1,16 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { CiChat1 } from "react-icons/ci";
 import './BlogDetails.css';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Swal from 'sweetalert2';
+import ShowComment from '../ShowComment/ShowComment';
 
 const BlogDetails = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     const formBlogs = useLoaderData();
     const blog = (formBlogs[0]);
 
@@ -14,6 +19,14 @@ const BlogDetails = () => {
 
     const comment = useRef();
 
+    const [comments, setComments] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/comments')
+            .then(res => res.json())
+            .then(data => setComments(data));
+    }, [])
+
+    const commentCount = (comments.filter(s => s.blogId === blog._id).length);
 
     const handleCommentPost = e => {
         const commentData = {
@@ -53,14 +66,31 @@ const BlogDetails = () => {
                 <div className="container mx-auto">
                     <div className='backGroundBlogDetailsTag text-center'>{blog.tag}</div>
                     <div className='backGroundBlogDetailsTitle text-center'>{blog.blogTitle}</div>
-                    <div className="backGroundBlogDetailsTimeComment text-center">{blog.today} / by KOSATeam / <span> <CiChat1></CiChat1> 0</span> </div>
+                    <div className="backGroundBlogDetailsTimeComment text-center">{blog.today} / by KOSATeam / <span> <CiChat1></CiChat1> {commentCount}</span> </div>
                 </div>
             </div>
-            <div className='container mx-auto p-5'>
+            <div className='container mx-auto p-5 pb-0'>
                 <div className='backGroundBlogDescription'>{blog.description}</div>
                 <div className='backGroundBlogColon'>“</div>
                 <div className='backGroundBlogQuote'>{blog.quote}</div>
                 <hr />
+            </div>
+            <div className='mb-5'>
+                <div className='container mx-auto px-5 mb-5'>
+                    {
+                        commentCount > 0 &&
+                        <h1>{commentCount} comments</h1>
+                    }
+                    <hr />
+                </div>
+                {
+                    comments.filter(comment => comment.blogId === blog._id)
+                        .map(showComment =>
+                            <ShowComment
+                                key={showComment._id}
+                                showComment={showComment}>
+                            </ShowComment>)
+                }
             </div>
             <div className='container mx-auto blogDetailsComment px-5'>
                 <h4>Leave a Reply</h4>
