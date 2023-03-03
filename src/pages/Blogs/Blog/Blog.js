@@ -17,6 +17,7 @@ const Blog = ({ blog }) => {
 
     return (
         <div>
+            <img className='img-fluid mb-4 mt-4' src={blog.image} alt="" />
             <div className="blogTag">{blog.tag}</div>
             <div className="blogTitle">{blog.blogTitle}</div>
             <div className="blogTimeComment">{blog.today} / by KOSATeam / <span> <CiChat1></CiChat1> {commentCount} </span> </div>

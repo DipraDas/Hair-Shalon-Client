@@ -31,7 +31,8 @@ const AddBlogs = () => {
                         description: data.description,
                         quote: data.quote,
                         tag: data.tag,
-                        today: today
+                        today: today,
+                        image: imgData.data.url
                     }
                     fetch('http://localhost:5000/blogs', {
                         method: 'POST',
