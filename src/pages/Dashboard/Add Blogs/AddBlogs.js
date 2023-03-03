@@ -9,32 +9,54 @@ const AddBlogs = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
 
+    const imageHostKey = process.env.REACT_APP_imgbb_key;
+    console.log(imageHostKey);
+
     const handleAddBlog = data => {
         const today = format(new Date(), 'PP');
-        const blogDetails = {
-            blogTitle: data.blogTitle,
-            description: data.description,
-            quote: data.quote,
-            tag: data.tag,
-            today: today
-        }
-        fetch('http://localhost:5000/blogs', {
+        const image = data.image[0];
+        const formData = new FormData();
+        formData.append('image', image);
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+        console.log(url)
+        fetch(url, {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(blogDetails)
+            body: formData
         })
             .then(res => res.json())
-            .then(data => Swal.fire({
-                position: 'center center',
-                icon: 'success',
-                title: 'Blog Added Successfully',
-                showConfirmButton: false,
-                timer: 2500
-            }))
-            navigate('/dashboard');
+            .then(imgData => {
+                if (imgData.success) {
+                    const blogDetails = {
+                        blogTitle: data.blogTitle,
+                        description: data.description,
+                        quote: data.quote,
+                        tag: data.tag,
+                        today: today
+                    }
+                    fetch('http://localhost:5000/blogs', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(blogDetails)
+                    })
+                        .then(res => res.json())
+                        .then(data => Swal.fire({
+                            position: 'center center',
+                            icon: 'success',
+                            title: 'Blog Added Successfully',
+                            showConfirmButton: false,
+                            timer: 2500
+                        }))
+                    navigate('/dashboard');
+                }
+            })
+
+
+
+
+
     }
     return (
         <div className='container mx-auto'>
@@ -87,7 +109,7 @@ const AddBlogs = () => {
                         />
                     </div>
 
-                    <div className="form-control m-0 text-white row"
+                    <div className="form-control m-0 text-white row mb-3"
                         style={{ backgroundColor: '#212121', border: '1px solid #806800' }}>
                         <label className="label col-1 p-0">
                             <span className="label-text">Description</span>
@@ -97,6 +119,17 @@ const AddBlogs = () => {
                             style={{ outline: '0', backgroundColor: '#212121' }}
                             {...register("description")}>
                         </textarea>
+                    </div>
+
+                    <div
+                        style={{ backgroundColor: '#212121', border: '1px solid #806800' }}
+                        className="form-control p-0">
+                        <input 
+                        style={{ backgroundColor: '#212121', border: '1px solid #806800' }}
+                        type="file" {...register("image", {
+                            required: "Photo is Required"
+                        })} className="form-control form-control-md text-white" />
+                        {errors.img && <p className='text-red-500'>{errors.img.message}</p>}
                     </div>
 
                     <input

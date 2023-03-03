@@ -13,7 +13,7 @@ const BlogDetails = () => {
 
     const formBlogs = useLoaderData();
     const blog = (formBlogs[0]);
-
+    
     const { user } = useContext(AuthContext);
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -26,7 +26,7 @@ const BlogDetails = () => {
             .then(data => setComments(data));
     }, [])
 
-    const commentCount = (comments.filter(s => s.blogId === blog._id).length);
+    const commentCount = comments.filter(cC => cC.blogId === blog._id).length;
 
     const handleCommentPost = e => {
         const commentData = {
