@@ -10,7 +10,7 @@ const BlogBanner = () => {
         //     </div>
         // </div>
         <div className='blog-banner'>
-            <div className="mainTitleA">OUR BLOG</div>
+            <div className="mainTitleBanner">OUR BLOG</div>
         </div>
     );
 };

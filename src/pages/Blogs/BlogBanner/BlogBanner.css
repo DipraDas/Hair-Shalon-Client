@@ -1,6 +1,6 @@
 .blog-banner{
     background: url('../../../../src/Images/BlogPage/blogBanner.jpg');
-    height: 650px;
+    height: 600px;
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,42 +8,11 @@
     justify-content: center;
     align-items: center;
 }
-/* 
-.specialLetterA {
-    font-family: 'Pinyon Script', cursive;
-    font-size: 220px;
-    color: #b4b4b43d;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 
-/* .overwriteTitleA {
-    position: relative;
-    width: 100%;
-    text-align: center;
-} */
-
-.mainTitleA {
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* width: 100%;
-    height: 100%; */
+.mainTitleBanner {
     font-family: 'Roboto Slab', serif;
     font-size: 90px;
     font-weight: 200;
     letter-spacing: 8px;
-    /* margin-top: 40px; */
     color: #D4A977;
 }
-/* 
-.aboutBanner h2 {
-    margin-top: -110px;
-    font-size: 24px;
-    color: rgb(185, 185, 185);
-    letter-spacing: 1px;
-} */
