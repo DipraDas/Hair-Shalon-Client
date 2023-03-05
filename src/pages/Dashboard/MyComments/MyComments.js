@@ -1,24 +1,44 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
-import Loading from '../../../components/loading/Loading';
+import React, { useContext } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyComments = () => {
     const { user } = useContext(AuthContext);
 
-    const [comments, setComments] = useState([]);
-    useEffect(() => {
-        fetch(`http://localhost:5000/mycomments?email=${user?.email}`, {
+    const { data: comments = [], refetch } = useQuery({
+        queryKey: ['comments'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/mycomments?email=${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+            const data = await res.json();
+            return data;
+        }
+    });
+
+    const handleDetetingcomment = comment => {
+        fetch(`http://localhost:5000/mycomments/${comment._id}`, {
+            method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())
-            .then(data => setComments(data))
-    }, [user?.email])
-
-    const handleDetetingcomment = data => {
-
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                        position: 'center-center',
+                        icon: 'success',
+                        title: 'Comment Removed',
+                        showConfirmButton: false,
+                        timer: 2000
+                    })
+                }
+            })
     }
 
     return (
