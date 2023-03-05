@@ -48,8 +48,9 @@ const AllBlogs = () => {
                                 <th scope="col"></th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Posted</th>
+                                <th scope="col">Tag</th>
                                 <th scope="col">BackID</th>
-                                {/* <th scope="col">Edit</th> */}
+                                <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
@@ -59,18 +60,19 @@ const AllBlogs = () => {
                                     <th scope="row">{i + 1}</th>
                                     <td>{blog.blogTitle}</td>
                                     <td>{blog.today}</td>
+                                    <td>{blog.tag}</td>
                                     <td>{blog._id}</td>
-                                    {/* <td>
+                                    <td>
                                         <button
                                             data-bs-toggle="modal"
                                             data-bs-target="#exampleModal"
-                                            onClick={() => { handleEditUser(blog) }}
-                                            style={{ backgroundColor: '#1e0076' }}
+                                            // onClick={() => { handleEditUser(blog) }}
+                                            style={{ backgroundColor: '#000196' }}
                                             type="button"
                                             className="btn btn-sm text-white py-0">                                                                                     
                                             Make Change
                                         </button>
-                                    </td> */}
+                                    </td>
                                     <td><button onClick={() => handleDetetingUser(blog)} style={{ backgroundColor: 'red' }} type="button" className="btn btn-sm text-white py-0">Remove</button></td>
                                     
                                 </tr>)

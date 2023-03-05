@@ -16,6 +16,7 @@ const DashboardLayout = () => {
                     <div style={{}}>
                         {user && <h1 className='mt-3' style={{ color: '#D4A977', fontWeight: '300', letterSpacing: '2px' }}>{user?.displayName}</h1>}
                         <NavLink to="/dashboard" style={{ textDecoration: 'none' }}><div  className='nav-style px-2 py-2 mt-4 text-white mb-2'>My Profile</div></NavLink>
+                        <NavLink to="/dashboard/mycomments" style={{ textDecoration: 'none' }}><div  className='nav-style px-2 py-2 text-white mb-2'>My Comments</div></NavLink>
                         {
                             isAdmin &&
                             <>

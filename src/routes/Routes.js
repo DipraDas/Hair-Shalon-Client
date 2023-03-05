@@ -16,6 +16,7 @@ import AllRegisteredUser from "../pages/Dashboard/AllRegisteredUser/AllRegistere
 import BlogComponent from "../pages/Blogs/BlogsComponent/BlogComponent";
 import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
 import BlogDetails from "../pages/Blogs/BlogDetails/BlogDetails";
+import MyComments from "../pages/Dashboard/MyComments/MyComments";
 
 const routes = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyProfile></MyProfile>
+            },
+            {
+                path: "/dashboard/mycomments",
+                element: <MyComments></MyComments>
             },
             {
                 path: '/dashboard/allUsers',

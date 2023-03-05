@@ -2,9 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Swal from 'sweetalert2';
 import { FaCheckCircle } from 'react-icons/fa';
+import Loading from '../../../components/loading/Loading';
 
 const AllRegisteredUser = () => {
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch,loading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/users');
@@ -59,6 +60,9 @@ const AllRegisteredUser = () => {
             })
     }
 
+    if(loading){
+        return <Loading></Loading>
+    }
 
     return (
         <div>
