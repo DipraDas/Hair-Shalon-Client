@@ -75,6 +75,7 @@ const AllRegisteredUser = () => {
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Sales Maneger</th>
                                 <th scope="col">Admin</th>
                                 <th scope="col">Delete</th>
                             </tr>
@@ -85,6 +86,7 @@ const AllRegisteredUser = () => {
                                     <th scope="row">{i + 1}</th>
                                     <td>{user.name}</td>
                                     <td>{user.email}</td>
+                                    <td><button style={{ backgroundColor: '#005967' }} className='btn btn-sm text-white py-0'>Make Sales Manager</button></td>
                                     <td>
                                         {
                                             user?.role !== 'admin' ?

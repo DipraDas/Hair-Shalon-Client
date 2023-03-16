@@ -30,7 +30,6 @@ const Blogs = () => {
                                 <div><h6 style={{ fontWeight: '400', letterSpacing: '1px' }}>{blog.blogTitle}</h6></div>
                             </div>)
                     }
-
                 </div>
             </div>
         </div>
