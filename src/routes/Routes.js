@@ -8,7 +8,7 @@ import MyProfile from "../pages/Dashboard/MyProfile/MyProfile";
 import HomeComponents from "../pages/Home/HomeComponents/HomeComponents";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
-import ShopComponents from "../pages/Shop/ShopComponents/ShopComponents";
+
 import AdminRoute from "./AdminRoute";
 import PrivateRoutes from "./PrivateRoutes";
 import AddBlogs from "../pages/Dashboard/Add Blogs/AddBlogs";
@@ -17,6 +17,7 @@ import BlogComponent from "../pages/Blogs/BlogsComponent/BlogComponent";
 import AllBlogs from "../pages/Dashboard/AllBlogs/AllBlogs";
 import BlogDetails from "../pages/Blogs/BlogDetails/BlogDetails";
 import MyComments from "../pages/Dashboard/MyComments/MyComments";
+import ShopComponents from "../pages/Shop/ShopComponents/ShopComponents";
 
 const routes = createBrowserRouter([
     {
