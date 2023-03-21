@@ -4,10 +4,14 @@ import './Header.css';
 import logo from '../../../../src/Images/HomePage/Logo.png';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import { FaShoppingCart } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-
     const { user, logOut } = useContext(AuthContext);
+    const cart = useSelector(state => state.cart);
+    const cartLength = (cart.cart.length);
+
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -30,7 +34,10 @@ const Header = () => {
                             <Nav.Link as={Link} to="/blogs" className='navName'>BLOG</Nav.Link>
                             <Nav.Link as={Link} to="/contact" className='navName'>CONTACT</Nav.Link>
                         </Nav>
-                        <Nav>
+                        <Nav className='align-items-center'>
+                            {cartLength > 0 &&
+                                <FaShoppingCart style={{ fontSize: '50px', marginRight: '20px', border: '1px solid black', padding: '15px', cursor: 'pointer' }}></FaShoppingCart>
+                            }
                             {
                                 user?.uid ?
                                     <>

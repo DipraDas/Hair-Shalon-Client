@@ -7,7 +7,7 @@ import UpCommingProduct from '../UpCommingProduct/UpCommingProduct';
 import './Products.css';
 
 const Products = () => {
-    // const [products, setProducts] = useState([]);
+
     const [upcommingProducts, setUpcommingProducts] = useState([]);
     const [categories, setCategories] = useState([]);
 
