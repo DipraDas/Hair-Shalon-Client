@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { addToCart } from '../../../features/cart/cartSlice';
 import './Product.css';
-import toast, { Toaster } from 'react-hot-toast';
 
 
 const Product = (props) => {
     const { id, img, leftName, rightName, productName, price } = props.product;
     const dispatch = useDispatch();
-    const notify = () => toast('Here is your toast.');
+
     useEffect(() => {
 
     }, [])
