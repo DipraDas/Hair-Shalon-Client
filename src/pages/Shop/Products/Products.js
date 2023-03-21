@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import Loading from '../../../components/loading/Loading';
+import { useGetProductsQuery } from '../../../features/api/productSlice';
 import Categories from '../Categories/Categories';
 import Product from '../Product/Product';
 import UpCommingProduct from '../UpCommingProduct/UpCommingProduct';
 import './Products.css';
 
 const Products = () => {
-    const [products, setProducts] = useState([]);
+    // const [products, setProducts] = useState([]);
     const [upcommingProducts, setUpcommingProducts] = useState([]);
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        fetch('../../../product.JSON')
-            .then(response => response.json())
-            .then(data => setProducts(data));
-    }, [])
+    const { data, isLoading } = useGetProductsQuery();
+    const products = data;
+
+    if (isLoading) {
+        <Loading></Loading>
+    }
+
     useEffect(() => {
         fetch('../../../upCommingProduct.JSON')
             .then(response => response.json())
@@ -34,7 +38,7 @@ const Products = () => {
                         <div className="col-lg-9 col-md-12 px-4">
                             <div className="proContainer">
                                 {
-                                    products.map(product =>
+                                    products?.map(product =>
                                         <Product
                                             key={product.id}
                                             product={product}
