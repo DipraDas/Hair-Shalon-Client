@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Loading from '../../../components/loading/Loading';
 import { useGetProductsQuery } from '../../../features/api/productSlice';
 import Categories from '../Categories/Categories';
 import Product from '../Product/Product';
+import ShopCart from '../ShopCart/ShopCart';
 import UpCommingProduct from '../UpCommingProduct/UpCommingProduct';
 import './Products.css';
 
@@ -10,6 +12,10 @@ const Products = () => {
 
     const [upcommingProducts, setUpcommingProducts] = useState([]);
     const [categories, setCategories] = useState([]);
+
+    const cart = useSelector(state => state.cart);
+    const cartDetails = cart.cart;
+    const cartLength = (cart.cart.length);
 
     const { data, isLoading } = useGetProductsQuery();
     const products = data;
@@ -48,6 +54,19 @@ const Products = () => {
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-12 rightProducts">
+                            {
+                                cartLength > 0 &&
+                                <h4 className='mb-4'>Cart</h4>
+                            }
+                            <div className='mb-5'>
+                                {
+                                    cartLength > 0 &&
+                                    cartDetails.map(cart => <ShopCart
+                                        key={cart._id}
+                                        cart={cart}
+                                    ></ShopCart>)
+                                }
+                            </div>
                             <h4>Upcomming Products</h4>
                             {
                                 upcommingProducts.map(upcommingProduct =>
