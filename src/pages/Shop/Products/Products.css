@@ -26,6 +26,11 @@
     margin-top: 80px;
 }
 
+.subtotalStyle{
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+}
 /* Media Query */
 
 @media only screen and (max-width: 768px) {

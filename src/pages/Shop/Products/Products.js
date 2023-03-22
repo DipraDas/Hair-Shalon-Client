@@ -17,6 +17,9 @@ const Products = () => {
     const cartDetails = cart.cart;
     const cartLength = (cart.cart.length);
 
+    const eachProductCost = (cartDetails.map(c => (c.price * c.quantity)));
+    const subTotal = (eachProductCost.reduceRight((acc, cur) => acc + cur, 0)).toFixed(2);
+
     const { data, isLoading } = useGetProductsQuery();
     const products = data;
 
@@ -65,6 +68,13 @@ const Products = () => {
                                         key={cart._id}
                                         cart={cart}
                                     ></ShopCart>)
+                                }
+                                {
+                                    cartLength > 0 &&
+                                    <div className='d-flex justify-content-between'>
+                                        <div className='subtotalStyle'>Subtotal :</div>
+                                        <div className='subtotalStyle'>£{subTotal}</div>
+                                    </div>
                                 }
                             </div>
                             <h4>Upcomming Products</h4>
